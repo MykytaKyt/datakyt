@@ -56,4 +56,65 @@ An accounting database system stores the following information.
 
 ### 2.2 Product features
 
-This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2
+This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2 [![Untitled-Document](https://i.ibb.co/Jjn6rqM/Untitled-Document.png)](https://ibb.co/r2k8531) Picture 1.1 - DFD diagram A-0 level.
+
+[![DFD-A-0-1](https://i.ibb.co/KDq4P58/DFD-A-0-1.png)](https://ibb.co/nBcdGwK) Picture 1.2 - DFD diagram A0 level.
+
+### 2.3 Operating environment
+
+This product will work in any browser, as it will represent a web page. On PostgreSQL 9.5, Python 3.8\. This database will be located on Amazon AWS servers.
+
+### 2.4 Design and implementation constraints
+
+Our constraints are:
+
+- Possibilities of Python programming language and PostgreSQL DBMS;
+- Writing Python code that conforms to PEP 8;
+- Constraints that may be imposed by the project business logic such as:
+
+  - The ability to have multiple owners for one piece of equipment/furniture
+  - The database is operated in two modes: full access and partial (read-only) access, etc.
+
+  ## 3\. System features
+
+  ### 3.1 Description and priority
+
+- **Import/Export** to .csv file/ .xls file: saving or uploading tables.
+- **Generating QR codes** with unique inventory number: unique number on the inventory, which will make it easier to count and keep records
+- **Back up**: Saving the database before entering and changing information.
+- **Data Structuring**: all information in a digital repository is organized into a clear hierarchical structure with records, tables or objects.
+- **Multi-user Access**: provides multiple users access to all types of information stored in one and the same data store.
+- **Add/Remove** information about employee's or equipment in the database.
+- **User-Friendly**: read-only access to the database.
+- **Reporting tools**: necessary data query
+- **Inventory Monitoring**: the activity of checking stock.
+
+## 4\. External interface requirements
+
+In my opinion, the application will intercommunicate directly through the web page. That is, to enter the site, login depending on the level of access (ordinary user, administrator), and continue to perform various operations, such as adding/removing employees or technicians, creating reports on the number of technicians or employees.
+
+### 4.1 User interfaces
+
+- Front - end software: Python 3.8 version
+- Back - end software: PostgreSQL 9.5 version
+
+### 4.2 Hardware interfaces
+
+- a browser
+
+## 5\. Non functional requirements
+
+### 5.1 Software quality attributes
+
+For any system that is implemented in the software, several checks must be performed to minimize subsequent errors in its use. In our case we have used the following checks to detect errors:
+
+1. **Displaying information** - check the matching of fields in the form of user interface with similar fields inside the database.
+2. **Data safety and integrity** - all the information, as well as its modification, should be displayed identically.
+3. **Update table record** - the updated information corresponds to the block type.
+4. **Performance Check** - to verify that the software is working under load. Not the largest request should not be processed for 5 minutes.
+
+Database check allows reducing risks, which, one way or another, are related to the integrity of information, the ability of the architecture to respond to the load before the period of software implementation into full operation.
+
+### 5.2 Security requirements
+
+А password will be used in this database to access the information required during the work process. This applies to viewing the information as well as changing it. This measure is necessary to preserve the integrity of information and confidentiality of personal information about employees.
