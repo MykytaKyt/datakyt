@@ -38,7 +38,7 @@ The purpose of this document is to describe the equipment and employee's account
 
 ### 1.2 References
 
-1. <https://www.wikiwand.com/en/Flask_(web_framework>) : Flask is a python based lightweight web application framework.
+1. <https://www.wikiwand.com/en/Flask_(web_framework)> : Flask is a python based lightweight web application framework.
 2. <https://www.postgresql.org/> : PostgreSQL is a powerful, open source object-relational database system.
 3. <https://pypi.org/project/qrcode/>: Python's library for generating unique qr code for each device.
 4. <https://cutt.ly/zf7MkUX> : This article is an explanation of how to connect PostgreSQL with Flask.
@@ -47,3 +47,13 @@ The purpose of this document is to describe the equipment and employee's account
 ## 2\. Overall Description
 
 ### 2.1 Product perspective
+
+An accounting database system stores the following information.
+
+- **Equipment details:** It includes information about the equipment, such as laptops, monitors, mice, keyboards, headphones, which are issued to employees, as well as information about the equipment that is needed in other cities.
+- **Employee description:** It includes the employee's id, first name, last name, position, mail, phone number, birthday, city, project.
+- **Description of interaction:** It includes information which technique is given to each employee or information that the employee works on his technique. It also includes information about the workplace.
+
+### 2.2 Product features
+
+This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2
