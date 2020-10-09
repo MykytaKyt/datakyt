@@ -2,7 +2,7 @@
 
 ## Prepared by
 
-Mykyta Kyt | Alex Zhytnyk
+### Mykyta Kyt | Alex Zhytnyk
 
 1. Introduction
 
@@ -56,11 +56,12 @@ An accounting database system stores the following information.
 
 ### 2.2 Product features
 
-This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2 [![Untitled-Document](https://i.ibb.co/Jjn6rqM/Untitled-Document.png)](https://ibb.co/r2k8531) Picture 1.1 - DFD diagram A-0 level.
+This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2 [![Picture 1.1 - DFD diagram A-0 level.](https://i.ibb.co/Jjn6rqM/Untitled-Document.png)](https://ibb.co/r2k8531)
 
-[![DFD-A-0-1](https://i.ibb.co/KDq4P58/DFD-A-0-1.png)](https://ibb.co/nBcdGwK) Picture 1.2 - DFD diagram A0 level.
+- Picture 1.1 - DFD diagram A-0 level. [![Picture 1.2 - DFD diagram A0 level.](https://i.ibb.co/KDq4P58/DFD-A-0-1.png)](https://ibb.co/nBcdGwK)
+- Picture 1.2 - DFD diagram A0 level.
 
-### 2.3 Operating environment
+  ### 2.3 Operating environment
 
 This product will work in any browser, as it will represent a web page. On PostgreSQL 9.5, Python 3.8\. This database will be located on Amazon AWS servers.
 
@@ -82,6 +83,7 @@ Our constraints are:
 - **Import/Export** to .csv file/ .xls file: saving or uploading tables.
 
 - **Generating QR codes** with unique inventory number: unique number on the inventory, which will make it easier to count and keep records
+
 - **Back up**: Saving the database before entering and changing information.
 - **Data Structuring**: all information in a digital repository is organized into a clear hierarchical structure with records, tables or objects.
 - **Multi-user Access**: provides multiple users access to all types of information stored in one and the same data store.
