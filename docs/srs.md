@@ -2,33 +2,33 @@
 
 ## Prepared by
 
-Mykyta Kyt Alex Zhytnyk
+Mykyta Kyt | Alex Zhytnyk
 
 1. Introduction
 
-  1. Purpose
-  2. References
+  - 1.1 Purpose
+  - 1.2 References
 
 2. Overall Description
 
-  1. Product perspective
-  2. Product features
-  3. Operating environment
-  4. Design and implementation constraints
+  - 2.1 Product perspective
+  - 2.2 Product features
+  - 2.3 Operating environment
+  - 2.4 Design and implementation constraints
 
 3. System features
 
-  1. Description and priority
+  - 3.1 Description and priority
 
 4. External interface requirements
 
-  1. User Interfaces
-  2. Hardware Interfaces
+  - 4.1 User Interfaces
+  - 4.2 Hardware Interfaces
 
 5. Non functional requirements
 
-  1. Software quality attributes
-  2. Security requirements
+  - 5.1 Software quality attributes
+  - 5.2 Security requirements
 
 ## 1\. Introduction
 
@@ -80,6 +80,7 @@ Our constraints are:
   ### 3.1 Description and priority
 
 - **Import/Export** to .csv file/ .xls file: saving or uploading tables.
+
 - **Generating QR codes** with unique inventory number: unique number on the inventory, which will make it easier to count and keep records
 - **Back up**: Saving the database before entering and changing information.
 - **Data Structuring**: all information in a digital repository is organized into a clear hierarchical structure with records, tables or objects.
