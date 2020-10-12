@@ -4,31 +4,31 @@
 
 ### [Mykyta Kyt](https://github.com/NikitaKit1998) | [Alex Zhytnyk](https://github.com/Alex-ty1)
 
-1. [Introduction](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#1-introduction)
+1. [Introduction](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#1-introduction)
 
-  - 1.1 [Purpose](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#11-purpose)
-  - 1.2 [References](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#12-references)
+  - 1.1 [Purpose](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#11-purpose)
+  - 1.2 [References](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#12-references)
 
-2. [Overall Description](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#2-overall-description)
+2. [Overall Description](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#2-overall-description)
 
-  - 2.1 [Product perspective](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#21-product-perspective)
-  - 2.2 [Product features](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#22-product-features)
-  - 2.3 [Operating environment](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#23-operating-environment)
-  - 2.4 [Design and implementation constraints](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#24-design-and-implementation-constraints)
+  - 2.1 [Product perspective](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#21-product-perspective)
+  - 2.2 [Product features](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#22-product-features)
+  - 2.3 [Operating environment](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#23-operating-environment)
+  - 2.4 [Design and implementation constraints](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#24-design-and-implementation-constraints)
 
-3. [System features](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#3-system-features)
+3. [System features](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#3-system-features)
 
-  - 3.1 [Description and priority](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#31-description-and-priority)
+  - 3.1 [Description and priority](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#31-description-and-priority)
 
-4. [External interface requirements](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#4-external-interface-requirements)
+4. [External interface requirements](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#4-external-interface-requirements)
 
-  - 4.1 [User Interfaces](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#41-user-interfaces)
-  - 4.2 [Hardware Interfaces](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#42-hardware-interfaces)
+  - 4.1 [User Interfaces](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#41-user-interfaces)
+  - 4.2 [Hardware Interfaces](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#42-hardware-interfaces)
 
-5. [Non functional requirements](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#5-non-functional-requirements)
+5. [Non functional requirements](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#5-non-functional-requirements)
 
-  - 5.1 [Software quality attributes](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#51-software-quality-attributes)
-  - 5.2 [Security requirements](https://github.com/NikitaKit1998/datakyt/blob/e332a38ae9b990caee1982335076da537d63c7e0/docs/srs.md#52-security-requirements)
+  - 5.1 [Software quality attributes](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#51-software-quality-attributes)
+  - 5.2 [Security requirements](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#52-security-requirements)
 
 ## 1\. Introduction
 
