@@ -51,16 +51,19 @@ The purpose of this document is to describe the equipment and employee's account
 An accounting database system stores the following information.
 
 - **Equipment details:** It includes information about the equipment, such as laptops, monitors, mice, keyboards, headphones, which are issued to employees, as well as information about the equipment that is needed in other cities.
-- **Employee description:** It includes the employee's id, first name, last name, position, mail, phone number, birthday, city, project.
+- **Employee description:** It includes the employee's id, first name, last name, position, mail, phone number, city, project.
 - **Description of interaction:** It includes information which technique is given to each employee or information that the employee works on his technique. It also includes information about the workplace.
-
+- **Description of equipment status:**
+ it includes information about the equipment that needs to be repaired or replaced by a new one.
+- **Software descriptions:**
+It includes information about the software, such as product key, quantity, expiration date, cost, date of purchase and who owns .
 ### 2.2 Product features
 
-This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2 [![Picture 1.1 - DFD diagram A-0 level.](https://i.ibb.co/Jjn6rqM/Untitled-Document.png)](https://ibb.co/r2k8531)
+This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2 ![image1.png](images/image1.png)
 
 Picture 1.1 - DFD diagram A-0 level.
 
-[![Picture 1.2 - DFD diagram A0 level.](https://i.ibb.co/KDq4P58/DFD-A-0-1.png)](https://ibb.co/nBcdGwK)
+![image2.png](images/image2.png)
 
 Picture 1.2 - DFD diagram A0 level.
 
