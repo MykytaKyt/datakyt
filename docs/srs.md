@@ -2,7 +2,7 @@
 
 ## Prepared by
 
-### Mykyta Kyt | Alex Zhytnyk
+### @NikitaKit1998 | @Alex-ty1
 
 1. Introduction
 
@@ -73,7 +73,7 @@ This product will work in any browser, as it will represent a web page. On Postg
 Our constraints are:
 
 - Possibilities of Python programming language and PostgreSQL DBMS;
-- Writing Python code that conforms to PEP 8;
+- Writing Python code that satisfies PEP 8;
 - Constraints that may be imposed by the project business logic such as:
 
   - The ability to have multiple owners for one piece of equipment/furniture
