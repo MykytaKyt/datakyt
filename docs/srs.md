@@ -2,7 +2,7 @@
 
 ## Prepared by
 
-### @NikitaKit1998 | @Alex-ty1
+### [Mykyta Kyt](https://github.com/NikitaKit1998) | [Alex Zhytnyk](https://github.com/Alex-ty1)
 
 1. Introduction
 
