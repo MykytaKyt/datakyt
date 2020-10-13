@@ -53,11 +53,10 @@ An accounting database system stores the following information.
 - **Equipment details:** It includes information about the equipment, such as laptops, monitors, mice, keyboards, headphones, which are issued to employees, as well as information about the equipment that is needed in other cities.
 - **Employee description:** It includes the employee's id, first name, last name, position, mail, phone number, city, project.
 - **Description of interaction:** It includes information which technique is given to each employee or information that the employee works on his technique. It also includes information about the workplace.
-- **Description of equipment status:**
- it includes information about the equipment that needs to be repaired or replaced by a new one.
-- **Software descriptions:**
-It includes information about the software, such as product key, quantity, expiration date, cost, date of purchase and who owns .
-### 2.2 Product features
+- **Description of equipment status:** it includes information about the equipment that needs to be repaired or replaced by a new one.
+- **Software descriptions:** It includes information about the software, such as product key, quantity, expiration date, cost, date of purchase and who owns .
+
+  ### 2.2 Product features
 
 This item presents the DFD-diagram, which shows the general cooperation in the system. They are presented in pictures 1.1-1.2 ![image1.png](images/image1.png)
 
@@ -93,9 +92,9 @@ Our constraints are:
 - **Back up**: Saving the database before entering and changing information.
 
 - **Data Structuring**: all information in a digital repository is organized into a clear hierarchical structure with records, tables or objects.
+
 - **Multi-user Access**: provides multiple users access to all types of information stored in one and the same data store.
 - **Add/Remove** information about employees or equipment in the database.
-- **User-Friendly**: read-only access to the database.
 - **Reporting tools**: necessary data query
 - **Inventory Monitoring**: the activity of checking stock.
 
