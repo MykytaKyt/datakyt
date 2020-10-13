@@ -116,7 +116,7 @@ In my opinion, the application will intercommunicate directly through the web pa
 
 ### 5.1 Software quality attributes
 
-For any system that is implemented in the software, several checks must be performed to minimize subsequent errors in its use. In our case we have used the following checks to detect errors:
+For any system that is implemented in the software, several checks must be performed to minimize subsequent errors in its usage. In our case we have used the following checks to detect errors:
 
 1. **Displaying information** - check the matching of fields in the form of user interface with similar fields inside the database.
 2. **Data safety and integrity** - all the information, as well as its modification, should be displayed identically.
