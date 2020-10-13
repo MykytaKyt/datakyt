@@ -100,7 +100,7 @@ Our constraints are:
 
 ## 4\. External interface requirements
 
-In my opinion, the application will intercommunicate directly through the web page. That is, to enter the site, login depending on the level of access (ordinary user, administrator), and continue to perform various operations, such as adding/removing employees or technicians, creating reports on the number of technicians or employees.
+In my opinion, the application will intercommunicate directly through the web page with users. That is, to enter the site, login depending on the level of access (ordinary user, administrator this means that there will be an account for the admin and the ordinary user), and continue to perform various operations, such as adding/removing employees or technicians, creating reports on the number of technicians or employees.
 
 ### 4.1 User interfaces
 
