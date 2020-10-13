@@ -96,6 +96,7 @@ Our constraints are:
 - **Multi-user Access**: provides multiple users access to all types of information stored in one and the same data store.
 
 - **Add/Remove** information about employees or equipment in the database.
+
 - **Reporting tools**: necessary data query
 - **Inventory Monitoring**: the activity of checking stock.
 
