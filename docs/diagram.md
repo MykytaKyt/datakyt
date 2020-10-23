@@ -1,7 +1,7 @@
 # Table software consist of:
 
-- **id**: PK, NOT NULL, INT,stores id of software.
-- **name**: TEXT, store name of software.
+- **id**: PK, NOT NULL, INT,stores id of software;
+- **name**: TEXT, store name of software;
 
 # Table software_license consist of:
 
@@ -16,7 +16,7 @@
 - **id**: PK, NOT NULL, INT, stores id of employee software license;
 - **employee_id**: FK, NOT NULL, INT, refers to the table employee;
 - **software_license_id**: FK, NOT NULL, INT, refers to the table software_license;
-- ****date_of_issue**: DATE, stores info when license was issued;
+- **date_of_issue**: DATE, stores info when license was issued;
 - **pick_up_date**: DATE, stores info when license was picked up;
 
 # Table furniture consist of:
@@ -27,12 +27,12 @@
 - **warranty**: INT, stores duration of warranty;
 - **cost**: INT, stores cost of furniture;
 
-# Table furniture_type consist of
+# Table furniture_type consist of:
 
 - **id**: PK, NOT NULL, INT, stores id of furniture types;
 - **type**: CHAR(64), stores info of different types of furniture;
 
-# Table employee_furniture consist of
+# Table employee_furniture consist of:
 
 - **id**: PK, NOT NULL, INT, stores id of employee furniture;
 - **furniture_id**: FK, NOT NULL, INT, refers to the table furniture;
