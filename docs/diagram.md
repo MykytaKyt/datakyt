@@ -1,11 +1,15 @@
-# Table software consist of:
+# Description of database structure
+
+![image2.png](images/diagram.png)
+
+## Table software consist of:
 
 var name | type    | constraints | description
 -------- | ------- | ----------- | ----------------------
 **id**   | PK, INT | NOT NULL    | stores id of software
 **name** | TEXT    | -           | store name of software
 
-# Table software_license consist of:
+## Table software_license consist of:
 
 var name             | type    | constraints | description
 -------------------- | ------- | ----------- | ------------------------------------------
@@ -15,7 +19,7 @@ var name             | type    | constraints | description
 **date_of_purchase** | DATE    | -           | stores info when the license was purchased
 **expires_date**     | DATE    | -           | stores the expiration date of the license
 
-# Table employee_sw_license consist of:
+## Table employee_sw_license consist of:
 
 var name                | type    | constraints | description
 ----------------------- | ------- | ----------- | --------------------------------------
@@ -25,7 +29,7 @@ var name                | type    | constraints | description
 **date_of_issue**       | DATE    | -           | stores info when license was issued
 **pick_up_date**        | DATE    | -           | stores info when license was picked up
 
-# Table furniture consist of:
+## Table furniture consist of:
 
 var name     | type    | constraints | description
 ------------ | ------- | ----------- | ----------------------------------
@@ -35,14 +39,14 @@ var name     | type    | constraints | description
 **warranty** | INT     | -           | stores duration of warranty
 **cost**     | INT     | -           | stores cost of furniture
 
-# Table furniture_type consist of:
+## Table furniture_type consist of:
 
 var name | type     | constraints | description
 -------- | -------- | ----------- | -------------------------------------------
 **id**   | PK, INT  | NOT NULL    | stores id of furniture types
 **type** | CHAR(64) | -           | stores info of different types of furniture
 
-# Table employee_furniture consist of:
+## Table employee_furniture consist of:
 
 var name          | type    | constraints | description
 ----------------- | ------- | ----------- | -------------------------------------
@@ -51,7 +55,7 @@ var name          | type    | constraints | description
 **employee_id**   | FK, INT | NOT NULL    | refers to the table employee
 **date_of_issue** | DATE    | -           | stores info when furniture was issued
 
-# Table employee consist of:
+## Table employee consist of:
 
 var name       | type        | constraints | description
 -------------- | ----------- | ----------- | ------------------------------------
@@ -62,7 +66,7 @@ var name       | type        | constraints | description
 **email**      | CHAR(65)    | -           | stores employee email
 **phone**      | VARCHAR(15) | -           | stores employee phone number
 
-# Table equipment consist of:
+## Table equipment consist of:
 
 var name              | type          | constraints | description
 --------------------- | ------------- | ----------- | ------------------------------------------------
@@ -77,28 +81,28 @@ var name              | type          | constraints | description
 **serial_number**     | DATE          | -           | stores serial number of equipment
 **phone**             | VARCHAR(15)   | -           | stores employee phone number
 
-# Table project consist of:
+## Table project consist of:
 
 var name | type     | constraints | description
 -------- | -------- | ----------- | ------------------------------
 **id**   | PK, INT  | NOT NULL    | stores id of a project
 **name** | CHAR(65) | -           | stores the name of the project
 
-# Table office consist of:
+## Table office consist of:
 
 var name | type      | constraints | description
 -------- | --------- | ----------- | -----------------------------
 **id**   | PK, INT   | NOT NULL    | stores id of a office
 **name** | CHAR(255) | -           | stores the name of the office
 
-# Table equipment_type consist of:
+## Table equipment_type consist of:
 
 var name | type      | constraints | description
 -------- | --------- | ----------- | -------------------------------------
 **id**   | PK, INT   | NOT NULL    | stores id of a equipment type
 **name** | CHAR(255) | -           | stores the name of the equipment type
 
-# Table equipment_part consist of:
+## Table equipment_part consist of:
 
 var name         | type      | constraints | description
 ---------------- | --------- | ----------- | -------------------------------------
@@ -106,7 +110,7 @@ var name         | type      | constraints | description
 **equipment_id** | FK, INT   | NOT NULL    | refers to the table equipment
 **name**         | CHAR(255) | -           | stores the name of the equipment part
 
-# Table employee_equipment consist of:
+## Table employee_equipment consist of:
 
 var name          | type     | constraints | description
 ----------------- | -------- | ----------- | ----------------------------------------
