@@ -1,6 +1,6 @@
 # Description of database structure
 
-![image2.png](images/diagram.png)
+![database.png](images/database.png)
 
 ## Table software consist of:
 
