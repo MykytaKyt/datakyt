@@ -15,9 +15,9 @@ var name             | type    | constraints | description
 -------------------- | ------- | ----------- | ------------------------------------------
 **id**               | PK, INT | NOT NULL    | stores id of a software license
 **software_id**      | FK, INT | NOT NULL    | refers to the table software
-**key_product**      | TEXT    | UNIQUE      | stores product key of software
+**product_key**      | TEXT    | UNIQUE      | stores product key of software
 **date_of_purchase** | DATE    | NOT NULL          | stores info when the license was purchased
-**expires_date**     | DATE    | NOT NULL           | stores the expiration date of the license
+**date_of_expiry**     | DATE    | NOT NULL           | stores the expiration date of the license
 
 ## Table employee_sw_license consist of:
 
@@ -27,7 +27,7 @@ var name                | type    | constraints | description
 **employee_id**         | FK, INT | NOT NULL    | refers to the table employee
 **software_license_id** | FK, INT | NOT NULL    | refers to the table software_license
 **date_of_issue**       | DATE    | NOT NULL           | stores info when license was issued
-**pick_up_date**        | DATE    | NOT NULL           | stores info when license was picked up
+**fisrt_usage_date**        | DATE    | NOT NULL           | stores info when license was picked up
 
 ## Table furniture consist of:
 
@@ -36,8 +36,8 @@ var name     | type    | constraints | description
 **id**       | PK, INT | NOT NULL    | stores id of furniture
 **type_id**  | FK, INT | NOT NULL    | refers to the table furniture_type
 **name**     | TEXT    | NOT NULL           | stores name of furniture
-**warranty** | INT     | NOT NULL           | stores duration of warranty
-**cost**     | INT     | REAL           | stores cost of furniture
+**warranty** | INT     | NOT NULL, REAL(months)           | stores duration of warranty
+**cost**     | INT     | REAL, (UAH)           | stores cost of furniture
 
 ## Table furniture_type consist of:
 
@@ -73,9 +73,9 @@ var name              | type          | constraints | description
 **id**                | PK, INT       | NOT NULL    | stores id of a employee
 **equipment_type_id** | FK, INT       | NOT NULL    | refers to the table equipment_type
 **name**              | FK, CHAR(255) | NOT NULL    | stores the name of the equipment
-**warranty**          | INT           | NOT NULL    | stores duration of warranty
-**cost**              | INT           | REAL        | stores equipment cost
-**status**            | CHAR(65)      | NOT NULL    | stores information about the status of equipment
+**warranty**          | INT           | NOT NULL, REAL(months)    | stores duration of warranty
+**cost**              | INT           | REAL, (UAH)              | stores equipment cost
+**status**            | CHAR(65)      | LIST (issued, on reserve, in repair, broken)    | stores information about the status of equipment
 **description**       | CHAR(255)     | CHECK (Lenght<255 )           | stores additional information about equipment
 **purhase_date**      | DATE          | NOT NULL           | stores date of purchase
 **serial_number**     | DATE          | NOT NULL           | stores serial number of equipment
@@ -118,4 +118,4 @@ var name          | type     | constraints | description
 **employee_id**   | FK, INT  | NOT NULL    | refers to the table employee
 **equipment_id**  | FK, INT  | NOT NULL    | refers to the table equipment
 **date_of_issue** | DATE     | NOT NULL           | stores info when equipment was issued
-**pick_up_date**  | DATE     | NOT NULL          | stores info when equipment was picked up
+**fisrt_usage_date**  | DATE     | NOT NULL          | stores info when equipment was picked up
