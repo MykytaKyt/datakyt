@@ -27,7 +27,7 @@ var name                | type    | constraints | description
 **employee_id**         | FK, INT | NOT NULL    | refers to the table employee
 **software_license_id** | FK, INT | NOT NULL    | refers to the table software_license
 **date_of_issue**       | DATE    | NOT NULL    | stores info when license was issued
-**fisrt_usage_date**    | DATE    | NOT NULL    | stores info when license was picked up
+**day_of_return**       | DATE    | NOT NULL    | stores info when license was returned
 
 ## Table furniture consist of:
 
@@ -111,10 +111,10 @@ var name         | type      | constraints | description
 
 ## Table employee_equipment consist of:
 
-var name             | type    | constraints | description
--------------------- | ------- | ----------- | -------------------------------------
-**id**               | PK, INT | NOT NULL    | stores id of a employee_equipment
-**employee_id**      | FK, INT | NOT NULL    | refers to the table employee
-**equipment_id**     | FK, INT | NOT NULL    | refers to the table equipment
-**date_of_issue**    | DATE    | NOT NULL    | stores info when equipment was issued
-**fisrt_usage_date** | DATE    | NOT NULL    | stores info when equipment was
+var name          | type    | constraints | description
+----------------- | ------- | ----------- | ---------------------------------------
+**id**            | PK, INT | NOT NULL    | stores id of a employee_equipment
+**employee_id**   | FK, INT | NOT NULL    | refers to the table employee
+**equipment_id**  | FK, INT | NOT NULL    | refers to the table equipment
+**date_of_issue** | DATE    | NOT NULL    | stores info when equipment was issued
+**day_of_return** | DATE    | NOT NULL    | stores info when equipment was returned
