@@ -7,7 +7,7 @@
 var name | type    | constraints | description
 -------- | ------- | ----------- | ----------------------
 **id**   | PK, INT | NOT NULL    | stores id of software
-**name** | TEXT    | NOT NULL           | store name of software
+**name** | TEXT    | NOT NULL           | stores name of software
 
 ## Table software_license consist of:
 
