@@ -36,7 +36,7 @@ var name     | type    | constraints | description
 **id**       | PK, INT | NOT NULL    | stores id of furniture
 **type_id**  | FK, INT | NOT NULL    | refers to the table furniture_type
 **name**     | TEXT    | NOT NULL           | stores name of furniture
-**warranty** | INT     | NOT NULL, REAL(months)           | stores duration of warranty
+**warranty** | INT     | NOT NULL, REAL (months)           | stores duration of warranty
 **cost**     | INT     | REAL, (UAH)           | stores cost of furniture
 
 ## Table furniture_type consist of:
