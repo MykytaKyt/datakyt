@@ -27,7 +27,6 @@ var name                | type    | constraints | description
 **employee_id**         | FK, INT | NOT NULL    | refers to the table employee
 **software_license_id** | FK, INT | NOT NULL    | refers to the table software_license
 **date_of_issue**       | DATE    | NOT NULL    | stores info when license was issued
-**date_of_return**       | DATE    | NULL | stores info when license was returned
 
 ## Table furniture consist of:
 
