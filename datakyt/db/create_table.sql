@@ -9,7 +9,7 @@ CREATE TABLE project
 CREATE TABLE office
 (
 	id          SMALLSERIAL     PRIMARY KEY,
-	city        char(255)       NOT NULL
+	city        text            NOT NULL
 );
 
 CREATE TABLE employee
@@ -38,7 +38,7 @@ CREATE TABLE equipment
 	cost                money          NOT NULL CHECK (cost > 0::money),
 	status              varchar(10)    NOT NULL
          CONSTRAINT status_check CHECK(status IN('issued','on reserve','in repair','broken')),
-	description         char(255),
+	description         text,
 	purchase_date       date           NOT NULL,
 	serial_number       varchar(65)    NOT NULL,
 	equipment_type_id	SMALLSERIAL
@@ -57,8 +57,8 @@ CREATE TABLE equipment_part
 
 CREATE TABLE software
 (
-	id      SMALLSERIAL	 PRIMARY KEY,
-	name    text         NOT NULL
+    id      SMALLSERIAL	 PRIMARY KEY,
+    name    text         NOT NULL
 );
 
 CREATE TABLE software_license
@@ -75,8 +75,7 @@ CREATE TABLE employee_sw_license
 (
 	id                  SMALLSERIAL 	PRIMARY KEY,
 	date_of_issue       date            NOT NULL,
-	date_of_return      date,
-	employee_id		    SMALLSERIAL
+	employee_id         SMALLSERIAL
 	    CONSTRAINT employee_id_fk REFERENCES employee(id) ON DELETE CASCADE,
 	software_license_id	SMALLSERIAL
 	    CONSTRAINT software_license_id_fk REFERENCES software_license(id) ON DELETE CASCADE
@@ -86,14 +85,14 @@ CREATE TABLE employee_sw_license
 
 CREATE TABLE furniture_type
 (
-	id	    SMALLSERIAL     PRIMARY KEY,
-	type    text            UNIQUE
+    id      SMALLSERIAL     PRIMARY KEY,
+    type    text            UNIQUE
 );
 
 CREATE TABLE furniture
 (
 	id                  SMALLSERIAL	PRIMARY KEY,
-	furniture_type_id	SMALLSERIAL
+	furniture_type_id   SMALLSERIAL
 	    CONSTRAINT furniture_type_id_fk REFERENCES furniture_type (id) ON DELETE CASCADE,
 	name                text		NOT NULL,
 	warranty            integer		NOT NULL,
