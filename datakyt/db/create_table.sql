@@ -92,17 +92,17 @@ CREATE TABLE furniture_type
 CREATE TABLE furniture
 (
 	id                  SMALLSERIAL	PRIMARY KEY,
-	furniture_type_id   SMALLSERIAL
+    furniture_type_id   SMALLSERIAL
 	    CONSTRAINT furniture_type_id_fk REFERENCES furniture_type (id) ON DELETE CASCADE,
-	name                text		NOT NULL,
-	warranty            integer		NOT NULL,
+	name                text        NOT NULL,
+	warranty            integer	    NOT NULL,
 	cost                money 	    NOT NULL CHECK (cost > 0::money)
 );
 
 CREATE TABLE employee_furniture
 (
 	id	            SMALLSERIAL     PRIMARY KEY,
-	date_of_issue   date	        NOT NULL,
+	date_of_issue   date            NOT NULL,
 	furniture_id    SMALLSERIAL
 	    CONSTRAINT furniture_id_fk REFERENCES furniture (id) ON DELETE CASCADE,
 	employee_id	    SMALLSERIAL
@@ -111,8 +111,8 @@ CREATE TABLE employee_furniture
 
 CREATE TABLE employee_equipment
 (
-	id		            SMALLSERIAL     PRIMARY KEY,
-	employee_id	        SMALLSERIAL
+	id                  SMALLSERIAL     PRIMARY KEY,
+	employee_id         SMALLSERIAL
 	    CONSTRAINT employee_id_fk REFERENCES employee(id) ON DELETE CASCADE,
 	equipment_id        SMALLSERIAL
 	    CONSTRAINT equipment_id_fk REFERENCES equipment(id) ON DELETE CASCADE,
