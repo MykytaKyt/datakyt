@@ -61,7 +61,7 @@
 | **id**         | PK, INT     | NOT NULL    | stores id of a employee              |
 | **office_id**  | FK, INT     | NOT NULL    | refers to the table office           |
 | **project_id** | FK, INT     | NOT NULL    | refers to the table project          |
-| **name**       | CHAR(65)    | NOT NULL    | stores the full name of the employee |
+| **name**       | TEXT        | NOT NULL    | stores the full name of the employee |
 | **email**      | CHAR(65)    | UNIQUE      | stores employee email                |
 | **phone**      | VARCHAR(15) | UNIQUE      | stores employee phone number         |
 
@@ -71,7 +71,7 @@
 | --------------------- | ----------- | -------------------------------------------- | ------------------------------------------------ |
 | **id**                | PK, INT     | NOT NULL                                     | stores id of a employee                          |
 | **equipment_type_id** | FK, INT     | NOT NULL                                     | refers to the table equipment_type               |
-| **name**              | CHAR(255)   | NOT NULL                                     | stores the name of the equipment                 |
+| **name**              | TEXT        | NOT NULL                                     | stores the name of the equipment                 |
 | **warranty**          | INT         | NOT NULL, REAL(months)                       | stores duration of warranty                      |
 | **cost**              | MONEY       | REAL, (UAH)                                  | stores equipment cost                            |
 | **status**            | CHAR(65)    | LIST (issued, on reserve, in repair, broken) | stores information about the status of equipment |
@@ -81,32 +81,32 @@
 
 ## Table project consist of:
 
-| var name | type     | constraints | description                    |
-| -------- | -------- | ----------- | ------------------------------ |
-| **id**   | PK, INT  | NOT NULL    | stores id of a project         |
-| **name** | CHAR(65) | NOT NULL    | stores the name of the project |
+| var name | type    | constraints | description                    |
+| -------- | ------- | ----------- | ------------------------------ |
+| **id**   | PK, INT | NOT NULL    | stores id of a project         |
+| **name** | TEXT    | NOT NULL    | stores the name of the project |
 
 ## Table office consist of:
 
-| var name | type      | constraints | description                   |
-| -------- | --------- | ----------- | ----------------------------- |
-| **id**   | PK, INT   | NOT NULL    | stores id of a office         |
-| **name** | CHAR(255) | NOT NULL    | stores the name of the office |
+| var name | type    | constraints | description                   |
+| -------- | ------- | ----------- | ----------------------------- |
+| **id**   | PK, INT | NOT NULL    | stores id of a office         |
+| **name** | TEXT    | NOT NULL    | stores the name of the office |
 
 ## Table equipment_type consist of:
 
-| var name | type      | constraints | description                           |
-| -------- | --------- | ----------- | ------------------------------------- |
-| **id**   | PK, INT   | NOT NULL    | stores id of a equipment type         |
-| **name** | CHAR(255) | UNIQUE      | stores the name of the equipment type |
+| var name | type    | constraints | description                           |
+| -------- | ------- | ----------- | ------------------------------------- |
+| **id**   | PK, INT | NOT NULL    | stores id of a equipment type         |
+| **name** | TEXT    | UNIQUE      | stores the name of the equipment type |
 
 ## Table equipment_part consist of:
 
-| var name         | type      | constraints | description                           |
-| ---------------- | --------- | ----------- | ------------------------------------- |
-| **id**           | PK, INT   | NOT NULL    | stores id of a equipment part         |
-| **equipment_id** | FK, INT   | NOT NULL    | refers to the table equipment         |
-| **name**         | CHAR(255) | NOT NULL    | stores the name of the equipment part |
+| var name         | type    | constraints | description                           |
+| ---------------- | ------- | ----------- | ------------------------------------- |
+| **id**           | PK, INT | NOT NULL    | stores id of a equipment part         |
+| **equipment_id** | FK, INT | NOT NULL    | refers to the table equipment         |
+| **name**         | TEXT    | NOT NULL    | stores the name of the equipment part |
 
 ## Table employee_equipment consist of:
 
