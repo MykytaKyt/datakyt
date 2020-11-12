@@ -6,6 +6,7 @@ DataKyt is a system for equipment accounting.
 
 ### How to expand PostgreSQL for Linux
 
+- `sudo apt install postgresql-12`
 - `export PGHOST=localhost`
 - `sudo -u postgres psql`
 - `postgres=# ALTER USER postgres PASSWORD '12345';`
