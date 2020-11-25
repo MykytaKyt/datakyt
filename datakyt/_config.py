@@ -8,6 +8,8 @@ def get_config() -> dict:
 
 
 def set_config(params: dict):
+    if type(params) is not dict:
+        raise TypeError(f"Dict expected, got {type(params)} instead")
     for param, value in params.items():
         if value is not None:
             _global_config[param] = value
