@@ -41,4 +41,4 @@ def backup_postgres_db(host, database_name, port, user, password, test_file):
 
 if __name__ == '__main__':
 
-    backup_postgres_db('localhost', 'datakyt', '5432', 'datakyt_admin', 'password', 'backup.txt')
+    backup_postgres_db('localhost', 'datakyt', '5432', 'datakyt_admin', 'password', 'backup.sql')
