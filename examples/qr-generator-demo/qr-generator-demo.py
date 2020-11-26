@@ -6,6 +6,8 @@ from PIL import ImageDraw
 
 def image_generator(csv_file_path):
     df = pd.read_csv(csv_file_path, usecols=['employee_name', 'equipment_name', 'equipment_id'])
+    x=140
+    y=10
 
     for i in range(len(df)):
         df_list = df.loc[i, :].values.tolist()
@@ -14,10 +16,10 @@ def image_generator(csv_file_path):
         qr.add_data(df_list)
         qr.make()
 
-        font = ImageFont.truetype("arial.ttf", 20)
+        font = ImageFont.load_default()
         img = qr.make_image()
         draw = ImageDraw.Draw(img)
-        draw.text((140, 10), df["employee_name"][i], font=font)
+        draw.text((x, y), df["employee_name"][i], font=font)
         file_name = df["employee_name"][i]
         img.save(file_name + '.png')
 
