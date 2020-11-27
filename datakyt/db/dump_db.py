@@ -1,6 +1,6 @@
 import subprocess
 import logging
-
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG,
@@ -32,13 +32,18 @@ def backup_postgres_db(host, database_name, port, user, password, test_file):
              '-v'],
             stdout=subprocess.PIPE
         )
+        process.communicate()
         if int(process.returncode) != 0:
-            logger.error('Command failed. Return code : {}'.format(process.returncode))
-            exit(1)
+            raise RuntimeError('Command failed. Return code : {}'.format(process.returncode))
+
     except Exception as e:
         logger.error(e)
 
 
 if __name__ == '__main__':
+    time = datetime.now()
+    time = time.strftime("%m-%d-%Y-%H_%M")
+    dump_path = f'backup_datakyt_{time}.sql'
 
-    backup_postgres_db('localhost', 'datakyt', '5432', 'datakyt_admin', 'password', 'backup.sql')
+
+    backup_postgres_db('localhost', 'datakyt', '5432', 'datakyt_admin', 'password', dump_path)
