@@ -1,4 +1,5 @@
-SET ROLE datakyt_admin;
+SET ROLE postgres;
+GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;
 
 CREATE TABLE project
 (
