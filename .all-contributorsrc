@@ -28,6 +28,17 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "Alex-ty1",
+      "name": "Oleksandr Zhytnyk",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/71394662?v=4",
+      "profile": "https://github.com/Alex-ty1",
+      "contributions": [
+        "code",
+        "doc",
+        "talk"
+      ]
     }
   ],
   "contributorsPerLine": 7,
