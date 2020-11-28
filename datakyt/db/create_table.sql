@@ -1,5 +1,6 @@
 SET ROLE postgres;
 GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO datakyt_admin;
 
 CREATE TABLE project
 (
