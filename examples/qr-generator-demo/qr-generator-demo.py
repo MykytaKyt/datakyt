@@ -16,9 +16,8 @@ def image_generator(csv_file_path):
 
         img = qr.make_image()
         draw = ImageDraw.Draw(img)
-        x = 140
-        y = 10
-        draw.text((x, y), df["employee_name"][i], font=ImageFont.load_default())
+        top_left_text_position = (140, 10)
+        draw.text(top_left_text_position, df["employee_name"][i], font=ImageFont.load_default())
         file_name = df["employee_name"][i]
         img.save(file_name + '.png')
 
