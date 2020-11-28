@@ -39,6 +39,18 @@
         "doc",
         "talk"
       ]
+    },
+    {
+      "login": "paulzcooper",
+      "name": "Polina Zemko",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/51140452?v=4",
+      "profile": "https://github.com/paulzcooper",
+      "contributions": [
+        "talk",
+        "review",
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
