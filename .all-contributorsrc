@@ -1,0 +1,62 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "aartiukh",
+      "name": "Anton Artiukh",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6399458?v=4",
+      "profile": "https://github.com/aartiukh",
+      "contributions": [
+        "infra",
+        "talk",
+        "review"
+      ]
+    },
+    {
+      "login": "MykytaKyt",
+      "name": "Mykyta Kyt",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/59031709?v=4",
+      "profile": "https://github.com/MykytaKyt",
+      "contributions": [
+        "talk",
+        "example",
+        "design",
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "Alex-ty1",
+      "name": "Oleksandr Zhytnyk",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/71394662?v=4",
+      "profile": "https://github.com/Alex-ty1",
+      "contributions": [
+        "code",
+        "doc",
+        "talk"
+      ]
+    },
+    {
+      "login": "paulzcooper",
+      "name": "Polina Zemko",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/51140452?v=4",
+      "profile": "https://github.com/paulzcooper",
+      "contributions": [
+        "talk",
+        "review",
+        "code",
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "datakyt",
+  "projectOwner": "MykytaKyt",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
