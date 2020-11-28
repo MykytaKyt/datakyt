@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.DEBUG,
                     datefmt='%Y-%m-%d %I:%M:%S')
 
 
-def backup_postgres_db(host, database_name, port, user, password, test_file):
+def backup_postgres_db(host, database_name, port, user, password, backup_file_path):
     """
   Backup postgres db to a file.
 
@@ -20,7 +20,7 @@ def backup_postgres_db(host, database_name, port, user, password, test_file):
    port: the port to connect on (default 5432).
    user: the user account to connect as (default admin).
    password: the password for the user account to connect as.
-   test_file: the name of the file in which it will be stored back up.
+   backup_file_path: the name of the file in which it will be stored back up.
 
   """
     try:
@@ -28,7 +28,7 @@ def backup_postgres_db(host, database_name, port, user, password, test_file):
             ['pg_dump',
              '--dbname=postgresql://{}:{}@{}:{}/{}'.format(user, password, host, port, database_name),
              '-Fc',
-             '-f', test_file,
+             '-f', backup_file_path,
              '-v'],
             stdout=subprocess.PIPE
         )
@@ -44,6 +44,4 @@ if __name__ == '__main__':
     time = datetime.now()
     time = time.strftime("%m-%d-%Y-%H_%M")
     dump_path = f'backup_datakyt_{time}.sql'
-
-
     backup_postgres_db('localhost', 'datakyt', '5432', 'datakyt_admin', 'password', dump_path)
