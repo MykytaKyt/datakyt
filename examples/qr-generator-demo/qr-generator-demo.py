@@ -1,6 +1,8 @@
 import pandas as pd
 import qrcode
-
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
 
 def image_generator(csv_file_path):
     df = pd.read_csv(csv_file_path, usecols=['employee_name', 'equipment_name', 'equipment_id'])
@@ -13,6 +15,9 @@ def image_generator(csv_file_path):
         qr.make()
 
         img = qr.make_image()
+        draw = ImageDraw.Draw(img)
+        top_left_text_position = (140, 10)
+        draw.text(top_left_text_position, df["employee_name"][i], font=ImageFont.load_default())
         file_name = df["employee_name"][i]
         img.save(file_name + '.png')
 
