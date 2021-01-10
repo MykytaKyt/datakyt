@@ -51,8 +51,7 @@ class TestDB(unittest.TestCase):
         written in the database
         """
         path_csv = 'test_project.csv'
-        connection = psycopg2.connect(dbname='datakyt', user='datakyt_admin',
-                                      password='password', host='localhost')
+        connection = psycopg2.connect("dbname=datakyt user=datakyt_admin password= password host=localhost")
         elem_of_csv = TestDB.insert_csv_file_to_database(path_csv, connection)
         elem_of_table = TestDB.take_all_from_table(connection)
         self.assertEqual(elem_of_csv, elem_of_table)
