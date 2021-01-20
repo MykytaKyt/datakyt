@@ -45,8 +45,6 @@ CREATE TABLE equipment
 	    CONSTRAINT equipment_type_id_fk REFERENCES equipment_type(id) ON DELETE CASCADE
 );
 
-
-
 CREATE TABLE equipment_part
 (
 	id              SMALLSERIAL     PRIMARY KEY,
@@ -80,8 +78,6 @@ CREATE TABLE employee_sw_license
 	software_license_id	SMALLSERIAL
 	    CONSTRAINT software_license_id_fk REFERENCES software_license(id) ON DELETE CASCADE
 );
-
-
 
 CREATE TABLE furniture_type
 (
