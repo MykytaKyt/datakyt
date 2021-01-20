@@ -1,5 +1,4 @@
 SET ROLE postgres;
-GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;
 
 CREATE TABLE project
 (
@@ -120,3 +119,6 @@ CREATE TABLE employee_equipment
 	date_of_issue       date            NOT NULL,
 	day_of_return       date
 );
+
+GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO datakyt_admin;
