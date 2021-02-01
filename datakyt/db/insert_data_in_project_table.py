@@ -1,5 +1,4 @@
 import csv
-import os
 
 
 def insert_csv_file_to_database(path, conn):
@@ -11,14 +10,14 @@ def insert_csv_file_to_database(path, conn):
     conn: the connection of database.
     """
     cur = conn.cursor()
-    with open(os.path.join(path), 'r') as f:
-        reader = csv.reader(f)
-        next(reader)
-        cont_of_csv = []
-        for row in reader:
-            cur.execute('INSERT INTO PROJECT VALUES(%s,%s)',
-                        row)
-            cont_of_csv.append([int(row[0]), row[1]])
-            conn.commit()
+    array_values_from_file = []
+    with open(path, 'r') as f:
 
-    return cont_of_csv
+        reader = csv.reader(f)
+        for row in reader:
+            array_values_from_file.append([int(row[0]), row[1]])
+            insert_query = "INSERT INTO project VALUES {}".format(f"({row[0]}, '{row[1]}')")
+            cur.execute(insert_query)
+        conn.commit()
+
+        return array_values_from_file
