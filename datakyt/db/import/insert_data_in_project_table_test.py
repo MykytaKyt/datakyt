@@ -27,8 +27,8 @@ class TestDB(unittest.TestCase):
         Compares array values from csv file and values
         written in the database
         """
-        path_to_csv = 'test_project.csv'
-        path_to_db = 'test_database.db'
+        path_to_csv = 'test_data/test_project.csv'
+        path_to_db = 'test_data/test_database.db'
         connection = sqlite3.connect(path_to_db)
         elem_of_csv = insert_csv_file_to_database(path_to_csv, connection)
         elem_of_table = TestDB.take_all_from_table(connection)
