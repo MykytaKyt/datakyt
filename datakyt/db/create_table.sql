@@ -1,5 +1,4 @@
 SET ROLE postgres;
-GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;
 
 CREATE TABLE project
 (
@@ -46,8 +45,6 @@ CREATE TABLE equipment
 	    CONSTRAINT equipment_type_id_fk REFERENCES equipment_type(id) ON DELETE CASCADE
 );
 
-
-
 CREATE TABLE equipment_part
 (
 	id              SMALLSERIAL     PRIMARY KEY,
@@ -81,8 +78,6 @@ CREATE TABLE employee_sw_license
 	software_license_id	SMALLSERIAL
 	    CONSTRAINT software_license_id_fk REFERENCES software_license(id) ON DELETE CASCADE
 );
-
-
 
 CREATE TABLE furniture_type
 (
@@ -120,3 +115,6 @@ CREATE TABLE employee_equipment
 	date_of_issue       date            NOT NULL,
 	day_of_return       date
 );
+
+GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO datakyt_admin;
