@@ -39,7 +39,6 @@ class TestDB(unittest.TestCase):
     @staticmethod
     def create_database(path):
 
-
         sql_create_projects_table = """ CREATE TABLE project(
                         id SMALLSERIAL  PRIMARY KEY,
                         name text  NOT NULL
@@ -211,13 +210,6 @@ class TestDB(unittest.TestCase):
     def drop_database(path):
 
         os.remove(path)
-        # table = ['project', 'office', 'employee', 'equipment_type', 'equipment', 'equipment_part',
-        #          'software', 'software_license', 'employee_sw_license', 'furniture_type', 'furniture',
-        #          'employee_furniture', 'employee_equipment']
-        # conn = TestDB.create_connection(path)
-        # c = conn.cursor()
-        # for t in table:
-        #     c.execute(f'DROP TABLE {t};')
 
     def test_db(self):
         """
