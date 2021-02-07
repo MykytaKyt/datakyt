@@ -222,12 +222,12 @@ class TestDB(unittest.TestCase):
         dirname = os.path.dirname(__file__)
         path_to_csv = os.path.join(dirname, 'test_data/test_project.csv')
         path_to_db = os.path.join(dirname, 'test_data/test_database.db')
-        TestDB.drop_database(path_to_db)
         TestDB.create_database()
         connection = TestDB.create_connection(path_to_db)
         elem_of_csv = insert_csv_file_to_database(path_to_csv, connection)
         elem_of_table = TestDB.take_all_from_table(connection)
         self.assertEqual(elem_of_csv, elem_of_table)
+        TestDB.drop_database(path_to_db)
 
 
 if __name__ == '__main__':
