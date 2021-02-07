@@ -72,12 +72,14 @@ class TestDB(unittest.TestCase):
                                         warranty            integer        NOT NULL,
                                         cost                money          NOT NULL CHECK (cost > 0),
                                         status              varchar(10)    NOT NULL
-                                             CONSTRAINT status_check CHECK(status IN('issued','on reserve','in repair','broken')),
+                                             CONSTRAINT status_check 
+                                             CHECK(status IN('issued','on reserve','in repair','broken')),
                                         description         text,
                                         purchase_date       date           NOT NULL,
                                         serial_number       varchar(65)    NOT NULL,
                                         equipment_type_id	SMALLSERIAL
-                                            CONSTRAINT equipment_type_id_fk REFERENCES equipment_type(id) ON DELETE CASCADE
+                                            CONSTRAINT equipment_type_id_fk REFERENCES equipment_type(id) 
+                                            ON DELETE CASCADE
                                         );"""
 
         sql_create_equipment_part_table = """CREATE TABLE equipment_part(
@@ -107,7 +109,8 @@ class TestDB(unittest.TestCase):
                                             employee_id         SMALLSERIAL
                                                 CONSTRAINT employee_id_fk REFERENCES employee(id) ON DELETE CASCADE,
                                             software_license_id	SMALLSERIAL
-                                                CONSTRAINT software_license_id_fk REFERENCES software_license(id) ON DELETE CASCADE
+                                                CONSTRAINT software_license_id_fk REFERENCES software_license(id) 
+                                                ON DELETE CASCADE
                                             );"""
         sql_create_furniture_type_table = """CREATE TABLE furniture_type(
                                             id      SMALLSERIAL     PRIMARY KEY,
@@ -117,7 +120,8 @@ class TestDB(unittest.TestCase):
         sql_create_furniture_table = """CREATE TABLE furniture(
                                             id                  SMALLSERIAL	PRIMARY KEY,
                                             furniture_type_id   SMALLSERIAL
-                                                CONSTRAINT furniture_type_id_fk REFERENCES furniture_type (id) ON DELETE CASCADE,
+                                                CONSTRAINT furniture_type_id_fk REFERENCES furniture_type (id) 
+                                                ON DELETE CASCADE,
                                             name                text        NOT NULL,
                                             warranty            integer	    NOT NULL,
                                             cost                money 	    NOT NULL CHECK (cost > 0)
@@ -216,7 +220,6 @@ class TestDB(unittest.TestCase):
         for t in table:
             c.execute(f'DROP TABLE {t};')
 
-
     def test_db(self):
         """
         Compares array values from csv file and values
@@ -233,10 +236,5 @@ class TestDB(unittest.TestCase):
         self.assertEqual(elem_of_csv, elem_of_table)
 
 
-
-
-
-
 if __name__ == '__main__':
     unittest.main()
-
