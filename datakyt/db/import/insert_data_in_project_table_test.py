@@ -37,8 +37,8 @@ class TestDB(unittest.TestCase):
             print(e)
 
     @staticmethod
-    def create_database():
-        path_to_db = r'test_data/test_database.db'
+    def create_database(path):
+
 
         sql_create_projects_table = """ CREATE TABLE project(
                         id SMALLSERIAL  PRIMARY KEY,
@@ -141,7 +141,7 @@ class TestDB(unittest.TestCase):
                                             );"""
 
         # create a database connection
-        conn = TestDB.create_connection(path_to_db)
+        conn = TestDB.create_connection(path)
 
         # create tables
         if conn is not None:
@@ -184,6 +184,8 @@ class TestDB(unittest.TestCase):
             # create employee_equipment table
             TestDB.create_table(conn, sql_create_employee_equipment_table)
 
+            conn.close()
+
         else:
             print("Error! cannot create the database connection.")
 
@@ -201,28 +203,32 @@ class TestDB(unittest.TestCase):
         for row in cur:
             cont_of_table.append([row[0], row[1]])
         conn.commit()
+        conn.close()
 
         return cont_of_table
 
     @staticmethod
     def drop_database(path):
-        table = ['project', 'office', 'employee', 'equipment_type', 'equipment', 'equipment_part',
-                 'software', 'software_license', 'employee_sw_license', 'furniture_type', 'furniture',
-                 'employee_furniture', 'employee_equipment']
-        conn = TestDB.create_connection(path)
-        c = conn.cursor()
-        for t in table:
-            c.execute(f'DROP TABLE {t};')
+
+        os.remove(path)
+        # table = ['project', 'office', 'employee', 'equipment_type', 'equipment', 'equipment_part',
+        #          'software', 'software_license', 'employee_sw_license', 'furniture_type', 'furniture',
+        #          'employee_furniture', 'employee_equipment']
+        # conn = TestDB.create_connection(path)
+        # c = conn.cursor()
+        # for t in table:
+        #     c.execute(f'DROP TABLE {t};')
 
     def test_db(self):
         """
         Compares array values from csv file and values
+
         written in the database
         """
         dirname = os.path.dirname(__file__)
         path_to_csv = os.path.join(dirname, 'test_data/test_project.csv')
         path_to_db = os.path.join(dirname, 'test_data/test_database.db')
-        TestDB.create_database()
+        TestDB.create_database(path_to_db)
         connection = TestDB.create_connection(path_to_db)
         elem_of_csv = insert_csv_file_to_database(path_to_csv, connection)
         elem_of_table = TestDB.take_all_from_table(connection)
