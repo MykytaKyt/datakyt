@@ -1,8 +1,15 @@
 import sqlite3
 import unittest
 import os
+import logging
 from sqlite3 import Error
-from insert_data_in_project_table import insert_csv_file_to_database
+from insert_into_project_table import insert_into_project_table
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s.%(msecs)03d[%(process)d:%(thread)d:%(name)s:%(lineno)d] %(levelname)s %('
+                           'message)s',
+                    datefmt='%Y-%m-%d %I:%M:%S')
 
 
 class TestDB(unittest.TestCase):
@@ -14,12 +21,8 @@ class TestDB(unittest.TestCase):
         :param db_file: database file
         :return: Connection object or None
         """
-        conn = None
-        try:
-            conn = sqlite3.connect(db_file)
-            return conn
-        except Error as e:
-            print(e)
+
+        conn = sqlite3.connect(db_file)
 
         return conn
 
@@ -30,11 +33,8 @@ class TestDB(unittest.TestCase):
         :param create_table_sql: a CREATE TABLE statement
         :return:
         """
-        try:
-            c = conn.cursor()
-            c.execute(create_table_sql)
-        except Error as e:
-            print(e)
+        c = conn.cursor()
+        c.execute(create_table_sql)
 
     @staticmethod
     def create_database(path):
@@ -139,54 +139,20 @@ class TestDB(unittest.TestCase):
                         day_of_return       date
                                             );"""
 
+        sql_table = [sql_create_projects_table, sql_create_offices_table, sql_create_employees_table,
+                     sql_create_equipment_type_table, sql_create_equipment_table, sql_create_equipment_part_table,
+                     sql_create_software_table, sql_create_software_license_table, sql_create_employee_sw_license_table,
+                     sql_create_furniture_type_table, sql_create_furniture_table, sql_create_employee_furniture_table,
+                     sql_create_employee_equipment_table]
+
         # create a database connection
         conn = TestDB.create_connection(path)
 
-        # create tables
-        if conn is not None:
-            # create projects table
-            TestDB.create_table(conn, sql_create_projects_table)
+        # create table
+        for table in sql_table:
+            TestDB.create_table(conn, table)
 
-            # create office table
-            TestDB.create_table(conn, sql_create_offices_table)
-
-            # create employee table
-            TestDB.create_table(conn, sql_create_employees_table)
-
-            # create equipment_type table
-            TestDB.create_table(conn, sql_create_equipment_type_table)
-
-            # create equipment table
-            TestDB.create_table(conn, sql_create_equipment_table)
-
-            # create equipment_part table
-            TestDB.create_table(conn, sql_create_equipment_part_table)
-
-            # create software table
-            TestDB.create_table(conn, sql_create_software_table)
-
-            # create software_license table
-            TestDB.create_table(conn, sql_create_software_license_table)
-
-            # create employee_sw_license table
-            TestDB.create_table(conn, sql_create_employee_sw_license_table)
-
-            # create furniture_type table
-            TestDB.create_table(conn, sql_create_furniture_type_table)
-
-            # create furniture table
-            TestDB.create_table(conn, sql_create_furniture_table)
-
-            # create employee_furniture table
-            TestDB.create_table(conn, sql_create_employee_furniture_table)
-
-            # create employee_equipment table
-            TestDB.create_table(conn, sql_create_employee_equipment_table)
-
-            conn.close()
-
-        else:
-            print("Error! cannot create the database connection.")
+        conn.close()
 
     @staticmethod
     def take_all_from_table(conn):
@@ -207,7 +173,9 @@ class TestDB(unittest.TestCase):
         return cont_of_table
 
     @staticmethod
-    def drop_database(path):
+    def drop_database(conn, path):
+
+        conn.close()
 
         os.remove(path)
 
@@ -217,15 +185,29 @@ class TestDB(unittest.TestCase):
 
         written in the database
         """
+
         dirname = os.path.dirname(__file__)
         path_to_csv = os.path.join(dirname, 'test_data/test_project.csv')
         path_to_db = os.path.join(dirname, 'test_data/test_database.db')
         TestDB.create_database(path_to_db)
         connection = TestDB.create_connection(path_to_db)
-        elem_of_csv = insert_csv_file_to_database(path_to_csv, connection)
-        elem_of_table = TestDB.take_all_from_table(connection)
+        try:
+
+            elem_of_csv = insert_into_project_table(path_to_csv, connection)
+
+        except Exception as e:
+            logger.error(e)
+            elem_of_csv = None
+
+        try:
+            elem_of_table = TestDB.take_all_from_table(connection)
+
+        except Exception as e:
+            logger.error(e)
+            elem_of_table = []
+
         self.assertEqual(elem_of_csv, elem_of_table)
-        TestDB.drop_database(path_to_db)
+        TestDB.drop_database(connection, path_to_db)
 
 
 if __name__ == '__main__':
