@@ -2,7 +2,6 @@ import sqlite3
 import unittest
 import os
 import logging
-from sqlite3 import Error
 from insert_into_project_table import insert_into_project_table
 
 logger = logging.getLogger(__name__)
