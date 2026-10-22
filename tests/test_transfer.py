@@ -65,7 +65,10 @@ def test_import_commits_only_when_clean(client, factory):
     project = factory.project()
     office = factory.office()
     header = "full_name,email,phone,project_id,office_id\n"
-    good = f"Anna,anna@example.com,,{project.id},{office.id}\nIvan,ivan@example.com,+380501112233,{project.id},{office.id}\n"
+    good = (
+        f"Anna,anna@example.com,,{project.id},{office.id}\n"
+        f"Ivan,ivan@example.com,+380501112233,{project.id},{office.id}\n"
+    )
     dry = upload(client, "employees", (header + good).encode()).json()
     assert dry["errors"] == [] and dry["imported"] == 0
     assert client.get("/employees").json()["total"] == 0

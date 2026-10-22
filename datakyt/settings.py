@@ -15,9 +15,12 @@ class Settings(BaseSettings):
 
     Every field can be overridden with an environment variable named
     ``DATAKYT_<FIELD>`` or with a line in a ``.env`` file in the working directory.
+    Empty variables count as unset, so Compose files can pass optional values through.
     """
 
-    model_config = SettingsConfigDict(env_prefix="DATAKYT_", env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_prefix="DATAKYT_", env_file=".env", env_ignore_empty=True, extra="ignore"
+    )
 
     env: Literal["development", "production", "test"] = "development"
     log_level: str = "INFO"

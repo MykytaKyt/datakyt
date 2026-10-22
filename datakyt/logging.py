@@ -9,7 +9,8 @@ from typing import Any
 
 request_id_var: ContextVar[str | None] = ContextVar("request_id", default=None)
 
-_RESERVED = set(vars(logging.makeLogRecord({})))
+# Standard LogRecord attributes plus uvicorn's ANSI-colored duplicate of the message.
+_RESERVED = set(vars(logging.makeLogRecord({}))) | {"color_message"}
 _configured = False
 
 

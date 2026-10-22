@@ -7,12 +7,14 @@ from typing import Annotated
 import typer
 from alembic import command
 from alembic.config import Config
+from pydantic import ValidationError
 
 from datakyt import backup as backups
 from datakyt import seed as demo
 from datakyt.db import get_sessionmaker
 from datakyt.logging import configure_logging
 from datakyt.models import Role
+from datakyt.schemas import UserCreate
 from datakyt.services import users
 from datakyt.services.errors import ServiceError
 from datakyt.settings import get_settings
@@ -57,8 +59,13 @@ def bootstrap() -> None:
         if settings.admin_password is None
         else settings.admin_password.get_secret_value()
     )
+    try:
+        admin = UserCreate(email=email, password=password, role=Role.ADMIN)
+    except ValidationError as exc:
+        typer.echo(f"invalid DATAKYT_ADMIN_EMAIL or DATAKYT_ADMIN_PASSWORD: {exc}", err=True)
+        raise typer.Exit(1) from exc
     with get_sessionmaker()() as session:
-        user = users.ensure_admin(session, email, password)
+        user = users.ensure_admin(session, admin.email, admin.password)
         if user is None:
             typer.echo("users already exist; bootstrap skipped")
         else:
@@ -96,8 +103,6 @@ def create_user(
     ] = "",
 ) -> None:
     """Create an application user."""
-    from datakyt.schemas import UserCreate
-
     data = UserCreate(email=email, password=password, role=role)
     with get_sessionmaker()() as session:
         try:
@@ -160,5 +165,6 @@ def serve(
         reload=reload,
         workers=workers,
         log_config=None,
+        access_log=False,  # requests are logged by the app's middleware
         proxy_headers=True,
     )

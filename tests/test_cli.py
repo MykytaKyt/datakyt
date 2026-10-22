@@ -105,3 +105,23 @@ def test_serve_passes_options(monkeypatch):
     assert invoke("serve", "--port", "9000").exit_code == 0
     assert calls["port"] == 9000
     assert calls["factory"] is True
+
+
+def test_bootstrap_rejects_weak_password(monkeypatch):
+    monkeypatch.setenv("DATAKYT_ADMIN_PASSWORD", "short")
+    get_settings.cache_clear()
+    try:
+        result = runner.invoke(cli.app, ["bootstrap"])
+    finally:
+        get_settings.cache_clear()
+    assert result.exit_code == 1
+    assert "DATAKYT_ADMIN_PASSWORD" in result.output
+
+
+def test_empty_env_values_are_ignored(monkeypatch):
+    monkeypatch.setenv("DATAKYT_ADMIN_PASSWORD", "")
+    get_settings.cache_clear()
+    try:
+        assert get_settings().admin_password is None
+    finally:
+        get_settings.cache_clear()
