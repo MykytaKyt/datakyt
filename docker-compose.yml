@@ -1,0 +1,47 @@
+# Local development and evaluation stack: `docker compose up`, then open
+# http://localhost:8000. Every value can be overridden in a .env file
+# (see .env.example). The defaults below are for local use only.
+name: datakyt
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DATAKYT_DB_NAME:-datakyt}
+      POSTGRES_USER: ${DATAKYT_DB_USER:-datakyt}
+      POSTGRES_PASSWORD: ${DATAKYT_DB_PASSWORD:-datakyt-local}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${DATAKYT_DB_HOST_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build: .
+    image: datakyt:local
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATAKYT_ENV: ${DATAKYT_ENV:-development}
+      DATAKYT_DB_HOST: db
+      DATAKYT_DB_NAME: ${DATAKYT_DB_NAME:-datakyt}
+      DATAKYT_DB_USER: ${DATAKYT_DB_USER:-datakyt}
+      DATAKYT_DB_PASSWORD: ${DATAKYT_DB_PASSWORD:-datakyt-local}
+      DATAKYT_JWT_SECRET: ${DATAKYT_JWT_SECRET:-}
+      DATAKYT_ADMIN_EMAIL: ${DATAKYT_ADMIN_EMAIL:-admin@example.com}
+      DATAKYT_ADMIN_PASSWORD: ${DATAKYT_ADMIN_PASSWORD:-}
+      DATAKYT_SEED_DEMO: ${DATAKYT_SEED_DEMO:-true}
+      DATAKYT_LOG_LEVEL: ${DATAKYT_LOG_LEVEL:-INFO}
+    ports:
+      - "${DATAKYT_HTTP_PORT:-8000}:8000"
+    volumes:
+      - backups:/app/backups
+
+volumes:
+  db-data:
+  backups:
