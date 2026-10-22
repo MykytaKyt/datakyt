@@ -109,25 +109,25 @@ def test_viewer_can_read_but_not_write(viewer_client, factory):
         assert response.json()["detail"] == "admin role required"
 
 
-def test_every_mutating_route_requires_admin(app):
-    """Guard against new routes that forget the admin dependency."""
-    from fastapi.routing import APIRoute
+def test_every_mutating_route_requires_admin(app, viewer_client):
+    """Guard against new API routes that forget the admin dependency.
 
-    from datakyt.api.deps import require_role
+    Walks the OpenAPI schema (which lists every API route, however routers are
+    nested) and calls each mutating operation as a viewer. The role check runs
+    before body validation, so dummy path values and an empty body are enough.
+    """
+    import re
 
-    def dependency_names(route):
-        stack = list(route.dependant.dependencies)
-        while stack:
-            dep = stack.pop()
-            yield getattr(dep.call, "__qualname__", "")
-            stack.extend(dep.dependencies)
-
-    admin_check = require_role(Role.ADMIN).__qualname__
-    for route in app.routes:
-        if not isinstance(route, APIRoute) or route.path == "/auth/login":
-            continue
-        if route.methods & {"POST", "PATCH", "PUT", "DELETE"}:
-            assert admin_check in set(dependency_names(route)), route.path
+    checked = 0
+    for path, operations in app.openapi()["paths"].items():
+        for method in operations:
+            if method not in {"post", "put", "patch", "delete"} or path == "/auth/login":
+                continue
+            url = re.sub(r"\{[^}]+\}", "1", path).replace("1.1", "offices.csv")
+            response = viewer_client.request(method.upper(), url, json={})
+            assert response.status_code == 403, f"{method.upper()} {path}"
+            checked += 1
+    assert checked >= 30
 
 
 def test_user_management(client):
