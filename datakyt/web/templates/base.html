@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ t("app.title") }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+  <script src="{{ url_for('static', path='htmx.min.js') }}" defer></script>
+</head>
+<body>
+{% if user %}
+<header>
+  <a class="brand" href="/ui/equipment">{{ t("app.title") }}</a>
+  <a href="/ui/equipment">{{ t("nav.equipment") }}</a>
+  <a href="/ui/employees">{{ t("nav.employees") }}</a>
+  <a href="/ui/reports">{{ t("nav.reports") }}</a>
+  <a href="/docs">{{ t("nav.api_docs") }}</a>
+  <span class="muted">{{ user.email }}</span>
+  <form method="post" action="/ui/logout"><button class="link">{{ t("nav.logout") }}</button></form>
+</header>
+{% endif %}
+<main>
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>

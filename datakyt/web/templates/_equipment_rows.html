@@ -1,0 +1,22 @@
+<div class="table-wrap">
+<table>
+  <thead><tr>
+    <th>{{ t("field.inventory_number") }}</th><th>{{ t("field.name") }}</th>
+    <th>{{ t("field.type") }}</th><th>{{ t("field.office") }}</th><th>{{ t("field.status") }}</th>
+  </tr></thead>
+  <tbody>
+  {% for item in page.items %}
+    <tr>
+      <td><a href="/ui/equipment/{{ item.id }}">{{ item.inventory_number }}</a></td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.equipment_type.name }}</td>
+      <td>{{ item.office.city }}</td>
+      <td><span class="badge {{ item.status.value }}">{{ t("status." ~ item.status.value) }}</span></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5" class="muted">{{ t("common.nothing_found") }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% with base_url="/ui/equipment" %}{% include "_pager.html" %}{% endwith %}

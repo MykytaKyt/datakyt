@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ item.inventory_number }} · {{ t("app.title") }}{% endblock %}
+{% block content %}
+<h1>{{ item.inventory_number }} — {{ item.name }}</h1>
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<div class="card">
+  <dl>
+    <dt>{{ t("field.status") }}</dt><dd><span class="badge {{ item.status.value }}">{{ t("status." ~ item.status.value) }}</span></dd>
+    <dt>{{ t("field.type") }}</dt><dd>{{ item.equipment_type.name }}</dd>
+    <dt>{{ t("field.office") }}</dt><dd>{{ item.office.city }}</dd>
+    <dt>{{ t("field.serial_number") }}</dt><dd>{{ item.serial_number }}</dd>
+    <dt>{{ t("field.purchase_date") }}</dt><dd>{{ item.purchase_date }}</dd>
+    <dt>{{ t("field.warranty_months") }}</dt><dd>{{ item.warranty_months }}</dd>
+    <dt>{{ t("field.cost") }}</dt><dd>{{ item.cost }}</dd>
+    {% if item.description %}<dt>{{ t("field.description") }}</dt><dd>{{ item.description }}</dd>{% endif %}
+    {% if holder %}<dt>{{ t("equipment.holder") }}</dt>
+      <dd><a href="/ui/employees/{{ holder.employee.id }}">{{ holder.employee.full_name }}</a> ({{ holder.issued_on }})</dd>{% endif %}
+  </dl>
+  <p class="no-print">
+    <a href="/equipment/{{ item.id }}/label.png" target="_blank">{{ t("equipment.label_png") }}</a> ·
+    <a href="/labels.pdf?ids={{ item.id }}" target="_blank">{{ t("equipment.label_pdf") }}</a>
+  </p>
+</div>
+
+{% if user.role.value == "admin" %}
+<div class="card no-print">
+  {% if item.status.value == "issued" %}
+  <form method="post" action="/ui/equipment/{{ item.id }}/return" class="toolbar">
+    <label>{{ t("equipment.status_after_return") }}
+      <select name="status">
+        {% for s in return_statuses %}<option value="{{ s.value }}">{{ t("status." ~ s.value) }}</option>{% endfor %}
+      </select>
+    </label>
+    <button type="submit">{{ t("equipment.return") }}</button>
+  </form>
+  {% elif item.status.value == "reserved" %}
+  <form method="post" action="/ui/equipment/{{ item.id }}/issue" class="toolbar">
+    <label>{{ t("equipment.issue_to") }}
+      <select name="employee_id" required>
+        {% for e in employees %}<option value="{{ e.id }}">{{ e.full_name }} ({{ e.email }})</option>{% endfor %}
+      </select>
+    </label>
+    <button type="submit">{{ t("equipment.issue") }}</button>
+  </form>
+  {% else %}
+  <p class="muted">{{ t("equipment.not_available") }}</p>
+  {% endif %}
+</div>
+{% else %}
+<p class="muted">{{ t("common.read_only") }}</p>
+{% endif %}
+
+<div class="card">
+  <h2>{{ t("equipment.history") }}</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>{{ t("field.employee") }}</th><th>{{ t("field.issued_on") }}</th><th>{{ t("field.returned_on") }}</th></tr></thead>
+    <tbody>
+    {% for a in history %}
+      <tr><td><a href="/ui/employees/{{ a.employee.id }}">{{ a.employee.full_name }}</a></td>
+          <td>{{ a.issued_on }}</td><td>{{ a.returned_on or "—" }}</td></tr>
+    {% else %}
+      <tr><td colspan="3" class="muted">{{ t("common.nothing_found") }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

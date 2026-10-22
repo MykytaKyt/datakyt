@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ t("login.title") }} · {{ t("app.title") }}{% endblock %}
+{% block content %}
+<form class="card login" method="post" action="/ui/login">
+  <h1>{{ t("login.title") }}</h1>
+  {% if error %}<p class="error" role="alert">{{ t("login.failed") }}</p>{% endif %}
+  <label>{{ t("login.email") }}
+    <input type="email" name="email" value="{{ email or '' }}" autocomplete="username" required autofocus>
+  </label>
+  <label>{{ t("login.password") }}
+    <input type="password" name="password" autocomplete="current-password" required>
+  </label>
+  <button type="submit">{{ t("login.submit") }}</button>
+</form>
+{% endblock %}

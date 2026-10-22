@@ -6,13 +6,15 @@ import uuid
 from collections.abc import Awaitable, Callable
 
 from fastapi import FastAPI, Request, Response
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 from datakyt import __version__
 from datakyt.api.routers import assignments, auth, entities, items, ops, reports, transfer
 from datakyt.logging import configure_logging, request_id_var
 from datakyt.services.errors import AuthError, ServiceError
 from datakyt.settings import get_settings
+from datakyt.web import routes as web
 
 logger = logging.getLogger("datakyt.access")
 
@@ -75,4 +77,13 @@ def create_app() -> FastAPI:
     app.include_router(assignments.router)
     app.include_router(reports.router)
     app.include_router(transfer.router)
+
+    app.include_router(web.router)
+    app.add_exception_handler(web.LoginRequiredError, web.login_redirect)
+    app.mount("/static", StaticFiles(directory=web.WEB_DIR / "static"), name="static")
+
+    @app.get("/", include_in_schema=False)
+    def root() -> RedirectResponse:
+        return RedirectResponse("/ui/", status_code=307)
+
     return app
