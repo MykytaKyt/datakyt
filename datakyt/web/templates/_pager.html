@@ -1,0 +1,13 @@
+<div class="pager">
+  <span class="muted">{{ t("common.shown", shown=page.items|length, total=page.total) }}</span>
+  <span>
+    {% if page.offset > 0 %}
+    <button class="link" hx-get="{{ base_url }}" hx-target="#rows" hx-include="#filters"
+            hx-vals='{"offset": {{ [page.offset - page.limit, 0]|max }}}'>{{ t("common.previous") }}</button>
+    {% endif %}
+    {% if page.offset + page.limit < page.total %}
+    <button class="link" hx-get="{{ base_url }}" hx-target="#rows" hx-include="#filters"
+            hx-vals='{"offset": {{ page.offset + page.limit }}}'>{{ t("common.next") }}</button>
+    {% endif %}
+  </span>
+</div>

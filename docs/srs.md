@@ -1,34 +1,40 @@
 # SOFTWARE REQUIREMENTS SPECIFICATION
 
+> **Historical document (v0, 2020).** This is the original specification the
+> project started from. It is kept for reference and is no longer updated. The
+> implementation differs in places: it uses FastAPI instead of Flask, PostgreSQL 16
+> and Python 3.12, and the current schema is documented in [diagram.md](diagram.md).
+> See the [README](../README.md) for what the system does today.
+
 ## Prepared by
 
-### [Mykyta Kyt](https://github.com/NikitaKit1998) | [Alex Zhytnyk](https://github.com/Alex-ty1)
+### [Mykyta Kyt](https://github.com/MykytaKyt) | [Alex Zhytnyk](https://github.com/Alex-ty1)
 
-1. [Introduction](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#1-introduction)
+1. [Introduction](#1-introduction)
 
-  - 1.1 [Purpose](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#11-purpose)
-  - 1.2 [References](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#12-references)
+  - 1.1 [Purpose](#11-purpose)
+  - 1.2 [References](#12-references)
 
-2. [Overall Description](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#2-overall-description)
+2. [Overall Description](#2-overall-description)
 
-  - 2.1 [Product perspective](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#21-product-perspective)
-  - 2.2 [Product features](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#22-product-features)
-  - 2.3 [Operating environment](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#23-operating-environment)
-  - 2.4 [Design and implementation constraints](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#24-design-and-implementation-constraints)
+  - 2.1 [Product perspective](#21-product-perspective)
+  - 2.2 [Product features](#22-product-features)
+  - 2.3 [Operating environment](#23-operating-environment)
+  - 2.4 [Design and implementation constraints](#24-design-and-implementation-constraints)
 
-3. [System features](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#3-system-features)
+3. [System features](#3-system-features)
 
-  - 3.1 [Description and priority](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#31-description-and-priority)
+  - 3.1 [Description and priority](#31-description-and-priority)
 
-4. [External interface requirements](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#4-external-interface-requirements)
+4. [External interface requirements](#4-external-interface-requirements)
 
-  - 4.1 [User Interfaces](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#41-user-interfaces)
-  - 4.2 [Hardware Interfaces](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#42-hardware-interfaces)
+  - 4.1 [User Interfaces](#41-user-interfaces)
+  - 4.2 [Hardware Interfaces](#42-hardware-interfaces)
 
-5. [Non functional requirements](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#5-non-functional-requirements)
+5. [Non functional requirements](#5-non-functional-requirements)
 
-  - 5.1 [Software quality attributes](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#51-software-quality-attributes)
-  - 5.2 [Security requirements](https://github.com/NikitaKit1998/datakyt/blob/srs/docs/srs.md#52-security-requirements)
+  - 5.1 [Software quality attributes](#51-software-quality-attributes)
+  - 5.2 [Security requirements](#52-security-requirements)
 
 ## 1\. Introduction
 

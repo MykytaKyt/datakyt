@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ employee.full_name }} · {{ t("app.title") }}{% endblock %}
+{% block content %}
+<h1>{{ employee.full_name }}</h1>
+<div class="card">
+  <dl>
+    <dt>{{ t("field.email") }}</dt><dd>{{ employee.email }}</dd>
+    <dt>{{ t("field.phone") }}</dt><dd>{{ employee.phone or "—" }}</dd>
+    <dt>{{ t("field.position") }}</dt><dd>{{ employee.position or "—" }}</dd>
+    <dt>{{ t("field.project") }}</dt><dd>{{ employee.project.name }}</dd>
+    <dt>{{ t("field.office") }}</dt><dd>{{ employee.office.city }}</dd>
+  </dl>
+</div>
+<div class="card">
+  <h2>{{ t("employee.items") }}</h2>
+  {% if items %}
+  <div class="table-wrap"><table>
+    <thead><tr><th>{{ t("field.category") }}</th><th>{{ t("field.inventory_number") }}</th>
+      <th>{{ t("field.name") }}</th><th>{{ t("field.issued_on") }}</th></tr></thead>
+    <tbody>
+    {% for row in items %}
+      <tr><td>{{ row.category }}</td>
+        <td>{% if row.category == "equipment" %}<a href="/ui/equipment/{{ row.item_id }}">{{ row.inventory_number }}</a>{% else %}{{ row.inventory_number or "—" }}{% endif %}</td>
+        <td>{{ row.name }}</td><td>{{ row.issued_on }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  <p class="no-print"><a href="/reports/employee/{{ employee.id }}?format=xlsx">{{ t("reports.export") }} (XLSX)</a></p>
+  {% else %}
+  <p class="muted">{{ t("employee.no_items") }}</p>
+  {% endif %}
+</div>
+{% endblock %}

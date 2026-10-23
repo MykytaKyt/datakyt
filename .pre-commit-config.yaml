@@ -1,0 +1,44 @@
+# Install with `make install` (runs `pre-commit install`), which sets up both the
+# pre-commit and commit-msg hooks listed in default_install_hook_types.
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: ^datakyt/web/static/htmx\.min\.js$
+      - id: trailing-whitespace
+        exclude: ^datakyt/web/static/htmx\.min\.js$
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.2
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.4.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [--strict, feat, fix, refactor, test, docs, ci, build, chore]
+
+  - repo: local
+    hooks:
+      - id: no-ai-attribution
+        name: reject AI attribution in commit messages
+        entry: ci/commit-msg-attribution.sh
+        language: script
+        stages: [commit-msg]

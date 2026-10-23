@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ t("nav.equipment") }} · {{ t("app.title") }}{% endblock %}
+{% block content %}
+<h1>{{ t("nav.equipment") }}</h1>
+<form id="filters" class="toolbar" role="search" action="/ui/equipment"
+      hx-get="/ui/equipment" hx-target="#rows" hx-trigger="input changed delay:300ms from:input, change from:select, submit">
+  <input type="search" name="q" value="{{ q or '' }}" placeholder="{{ t('common.search_placeholder') }}"
+         aria-label="{{ t('common.search') }}" autofocus>
+  <select name="status" aria-label="{{ t('field.status') }}">
+    <option value="">{{ t("common.all_statuses") }}</option>
+    {% for s in statuses %}
+    <option value="{{ s.value }}" {% if status == s.value %}selected{% endif %}>{{ t("status." ~ s.value) }}</option>
+    {% endfor %}
+  </select>
+  <noscript><button type="submit">{{ t("common.search") }}</button></noscript>
+</form>
+<div id="rows" class="card">{% include "_equipment_rows.html" %}</div>
+{% endblock %}

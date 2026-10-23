@@ -1,5 +1,0 @@
-CREATE DATABASE datakyt;
-
-CREATE USER datakyt_admin WITH ENCRYPTED PASSWORD 'password';
-
-GRANT ALL PRIVILEGES ON DATABASE datakyt TO datakyt_admin;

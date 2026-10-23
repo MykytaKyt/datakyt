@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ t("reports.title") }} · {{ t("app.title") }}{% endblock %}
+{% block content %}
+<h1>{{ t("reports.title") }}</h1>
+<div class="card">
+  <table>
+    <tbody>
+    {% for key, path in reports %}
+      <tr>
+        <td>{{ t(key) }}</td>
+        <td><a href="{{ path }}" target="_blank">{{ t("reports.view") }}</a></td>
+        <td><a href="{{ path }}{{ '&' if '?' in path else '?' }}format=csv">CSV</a></td>
+        <td><a href="{{ path }}{{ '&' if '?' in path else '?' }}format=xlsx">XLSX</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

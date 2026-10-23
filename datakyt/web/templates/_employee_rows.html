@@ -1,0 +1,20 @@
+<div class="table-wrap">
+<table>
+  <thead><tr>
+    <th>{{ t("field.full_name") }}</th><th>{{ t("field.email") }}</th><th>{{ t("field.position") }}</th>
+    <th>{{ t("field.project") }}</th><th>{{ t("field.office") }}</th>
+  </tr></thead>
+  <tbody>
+  {% for e in page.items %}
+    <tr>
+      <td><a href="/ui/employees/{{ e.id }}">{{ e.full_name }}</a></td>
+      <td>{{ e.email }}</td><td>{{ e.position or "" }}</td>
+      <td>{{ e.project.name }}</td><td>{{ e.office.city }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5" class="muted">{{ t("common.nothing_found") }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% with base_url="/ui/employees" %}{% include "_pager.html" %}{% endwith %}
